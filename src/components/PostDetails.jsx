@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function PostDetails({ post, onClose }) {
   const [currentPost, setCurrentPost] = useState(post);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/posts/${post.id}`)
-      .then(response => response.json())
-      .then(data => setCurrentPost(data));
+    axios.get(`http://localhost:8080/posts/${post.id}`)
+      .then(response => {
+        setCurrentPost(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching the post:', error);
+      });
   }, [post]);
 
   const handleDelete = () => {
-    fetch(`http://localhost:8080/posts/${post.id}`, {
-      method: 'Delete',
-    }).then(() => {
-      onClose();
-    });
+    axios.delete(`http://localhost:8080/posts/${post.id}`)
+      .then(() => {
+        onClose();
+      })
+      .catch(error => {
+        console.error('Error deleting the post:', error);
+      });
   };
 
   return (
