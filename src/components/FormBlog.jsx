@@ -10,7 +10,7 @@ const date = new Date().toISOString();
     e.preventDefault();
     // Handle form submission
     console.log({ date, title, image_url, blogPost });
-    axios.post(`http://localhost:8888/api/v1/BlogPosts`, {date, title, image_url, blogPost});
+    axios.post(`http://localhost:3000/api/v1/BlogPosts`, {date, title, image_url, blogPost});
     // .then(response => {
     //     console.log('Post successful:', response.data);
     // })
