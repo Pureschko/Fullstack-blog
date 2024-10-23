@@ -96,7 +96,7 @@ function PostDetails({ post, onClose }) {
             </button>
             <div className="flex space-x-2">
               <button 
-                className="btn w-20 bg-white text-gray-500 hover:bg-gray-100 shadow-none border-0" 
+                className="btn w-16 bg-white text-gray-500 hover:bg-transparent hover:text-gray-700 shadow-none border-0" 
                 onClick={handleCancel}>
                 Cancel
               </button>
