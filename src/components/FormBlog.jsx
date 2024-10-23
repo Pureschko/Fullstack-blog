@@ -10,13 +10,13 @@ const date = new Date().toISOString();
     e.preventDefault();
     // Handle form submission
     console.log({ date, title, image_url, blogPost });
-    axios.post(`http://localhost:3000/api/v1/BlogPosts`, {date, title, image_url, blogPost});
-    // .then(response => {
-    //     console.log('Post successful:', response.data);
-    // })
-    // .catch(error => {
-    //     console.error('There was an error posting the blog:', error);
-    // });
+    axios.post(`http://localhost:3000/api/v1/BlogPosts`, {date, title, image_url, blogPost})
+    .then(response => {
+        console.log('Post successful:', response.data);
+    })
+    .catch(error => {
+        console.error('There was an error posting the blog:', error);
+    });
   };
 
   const handleReset = () => {
@@ -46,7 +46,7 @@ const date = new Date().toISOString();
       <div className="mb-4 mx-[20%]">
         <label className="block text-gray-700 font-bold mb-2">Date:</label>
         <span className="text-gray-700">
-          {new Date().toLocaleDateString("en-GB")}
+          {new Date().toLocaleDateString("en-US")}
         </span>
       </div>
       <div className="mb-4 mx-[20%]">
