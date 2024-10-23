@@ -6,7 +6,7 @@ function PostDetails({ post, onClose }) {
   const [isEditing, setIsEditing] = useState(false);
   const [content, setContent] = useState(post.blogPost);
 
-  // Get post data
+  // Get the post data
   useEffect(() => {
     axios.get(`http://localhost:3000/api/v1/BlogPosts/${postId}`)
       .then(response => {
@@ -96,7 +96,7 @@ function PostDetails({ post, onClose }) {
             </button>
             <div className="flex space-x-2">
               <button 
-                className="btn w-24 bg-gray-500 text-white hover:bg-gray-700" 
+                className="btn w-20 bg-white text-gray-500 hover:bg-gray-100 shadow-none border-0" 
                 onClick={handleCancel}>
                 Cancel
               </button>
