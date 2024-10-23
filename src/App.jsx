@@ -1,13 +1,14 @@
 import React from "react";
 import Home from "./pages/Home";
-import CreateBlog from "./pages/CreateBlog";
 
 import Layout from "./components/Layout";
 
 import Blogs from "./Blogs/Blogs";
-import BlogDetail from "./pages/BlogDetail";
 
-import { SlideTabsExample } from "./components/SlideTabsExample";
+import PostDetails from "./components/PostDetails";
+import FormBlog from "./components/FormBlog";
+
+import { SlideTabsNavigation } from "./components/SlideTabsNavigation ";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -16,14 +17,14 @@ const App = () => {
     <>
       <BrowserRouter>
         <Layout>
-          <SlideTabsExample />
+          <SlideTabsNavigation />
 
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/create-blog" element={<CreateBlog />} />
+            <Route path="/FormBlog" element={<FormBlog />} />
 
             <Route path="/Blogs" element={<Blogs />} />
-            <Route path="/blog/:id" element={<BlogDetail />} />
+            <Route path="/blog/:id" element={<PostDetails />} />
 
             <Route path="*" element={<Home />} />
           </Routes>
@@ -34,4 +35,3 @@ const App = () => {
 };
 
 export default App;
-

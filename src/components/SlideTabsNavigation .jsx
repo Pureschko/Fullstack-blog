@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-export const SlideTabsExample = () => {
+export const SlideTabsNavigation = () => {
   return (
     <div className="bg-neutral-100 py-10 sticky top-0 z-20 ">
       <SlideTabs />
@@ -35,7 +35,7 @@ const SlideTabs = () => {
         {" "}
         <Tab setPosition={setPosition}>Blogs</Tab>{" "}
       </Link>
-      <Link to="/create-blog">
+      <Link to="/FormBlog ">
         {" "}
         <Tab setPosition={setPosition}>Create-Blogs</Tab>
       </Link>
