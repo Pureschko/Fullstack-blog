@@ -1,11 +1,37 @@
-import React from 'react'
+import React from "react";
+import Home from "./pages/Home";
+import CreateBlog from "./pages/CreateBlog";
 
-function App() {
+import Layout from "./components/Layout";
 
+import Blogs from "./Blogs/Blogs";
+import BlogDetail from "./pages/BlogDetail";
+
+import { SlideTabsExample } from "./components/SlideTabsExample";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+const App = () => {
   return (
-    <div>Hello frontend!
-    </div>
-  )
-}
+    <>
+      <BrowserRouter>
+        <Layout>
+          <SlideTabsExample />
 
-export default App
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/create-blog" element={<CreateBlog />} />
+
+            <Route path="/Blogs" element={<Blogs />} />
+            <Route path="/blog/:id" element={<BlogDetail />} />
+
+            <Route path="*" element={<Home />} />
+          </Routes>
+        </Layout>
+      </BrowserRouter>
+    </>
+  );
+};
+
+export default App;
+
