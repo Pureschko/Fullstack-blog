@@ -1,5 +1,5 @@
 {
-  "name": "vite-project",
+  "name": "Blog",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -15,7 +15,7 @@
   "dependencies": {
     "axios": "^1.7.7",
     "cors": "^2.8.5",
-    "expess": "^0.0.1-security",
+    "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "framer-motion": "^11.11.9",
     "lenis": "^1.1.14",
