@@ -5,7 +5,7 @@ import Layout from "./components/Layout";
 
 import Blogs from "./Blogs/Blogs";
 
-import PostDetails from "./components/PostDetails";
+import BlogDetail from "./pages/BlogDetail"; {/* Inna's changes*/}
 import FormBlog from "./components/FormBlog";
 
 import { SlideTabsNavigation } from "./components/SlideTabsNavigation ";
@@ -24,7 +24,7 @@ const App = () => {
             <Route path="/FormBlog" element={<FormBlog />} />
 
             <Route path="/Blogs" element={<Blogs />} />
-            <Route path="/blog/:id" element={<PostDetails />} />
+            <Route path="/blog/:id" element={<BlogDetail />} /> {/* Inna's changes*/}
 
             <Route path="*" element={<Home />} />
           </Routes>
