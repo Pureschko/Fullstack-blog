@@ -1,12 +1,15 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import PostDetails from "../components/PostDetails";
 
 const BlogDetail = () => {
   const { id } = useParams(); // Get the blog ID from the URL
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true); // For loading state
   const [error, setError] = useState(null); // For error handling
+  const [showPopup, setShowPopup] = useState(false); // Inna's code: To display the popup
+  const [selectedPost, setSelectedPost] = useState(null); // Inna's code: To store the selected post
 
   useEffect(() => {
     const fetchBlogDetail = async () => {
@@ -34,6 +37,18 @@ const BlogDetail = () => {
   // If no blog data is found
   if (!blog) return <p>No blog found.</p>;
 
+  // Inna's code: Open the popup
+  const openPopup = (post) => {
+    setSelectedPost(post);
+    setShowPopup(true); 
+  };
+
+  // Inna's code: Close the popup
+  const closePopup = () => {
+    setShowPopup(false); 
+    setSelectedPost(null); 
+  };
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-4">{blog.title}</h1>
@@ -42,12 +57,14 @@ const BlogDetail = () => {
           src={blog.image_url}
           alt={blog.title}
           className="w-full h-auto mb-4 rounded"
+          onClick={() => openPopup(blog)} //Inna's code: Open the popup
         />
       ) : (
         <img
           src="default-image-url.jpg"
           alt="Default"
           className="w-full h-auto mb-4 rounded"
+          onClick={() => openPopup(blog)} //Inna's code: Open the popup
         /> // Replace with your default image URL
       )}
       <p className="text-gray-600 mb-2">
@@ -55,6 +72,10 @@ const BlogDetail = () => {
       </p>
       <p className="text-lg">{blog.blogPost}</p>
       <p>{blog.id}</p>
+      {/* Inna's code: popup rendering */}
+      {showPopup && selectedPost && (
+  <PostDetails post={selectedPost} onClose={closePopup} />
+)}
     </div>
   );
 };

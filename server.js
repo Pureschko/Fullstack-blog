@@ -10,6 +10,7 @@ dotenv.config();
 const app = express();
 app.use(json(), cors());
 
+
 app.use("/api/v1/BlogPosts", blogPostsRoutes);
 // Connect to the database
 const port = process.env.PORT || 8888;
