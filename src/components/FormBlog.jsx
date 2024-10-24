@@ -28,9 +28,9 @@ const date = new Date().toISOString();
   return (
     <form
       onSubmit={handleSubmit}
-      className="p-6 bg-white shadow-md rounded-md mx-[10%] bg-slate-300"
+      className="p-6 bg-white border shadow-md rounded-md mx-auto bg-slate-300 max-w-lg mt-4"
     >
-      <div className="mb-4 mx-[20%]">
+      <div className="mb-4">
         <label htmlFor="title" className="block text-gray-700 font-bold mb-2">
           Title:
         </label>
@@ -43,13 +43,13 @@ const date = new Date().toISOString();
           className="input input-bordered w-full"
         />
       </div>
-      <div className="mb-4 mx-[20%]">
+      <div className="mb-4">
         <label className="block text-gray-700 font-bold mb-2">Date:</label>
         <span className="text-gray-700">
           {new Date().toLocaleDateString("en-US")}
         </span>
       </div>
-      <div className="mb-4 mx-[20%]">
+      <div className="mb-4">
         <label
           htmlFor="image_url"
           className="block text-gray-700 font-bold mb-2"
@@ -65,7 +65,7 @@ const date = new Date().toISOString();
           className="input input-bordered w-full"
         />
       </div>
-      <div className="mb-4 mx-[10%]">
+      <div className="mb-4">
         <label htmlFor="blog" className="block text-gray-700 font-bold mb-2">
           Blog:
         </label>
