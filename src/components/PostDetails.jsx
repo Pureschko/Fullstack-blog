@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-function PostDetails({ post, onClose }) {
+function PostDetails({ post, onClose, onUpdate }) {
   const [currentPost, setCurrentPost] = useState(post);
   const [isEditing, setIsEditing] = useState(false);
   const [content, setContent] = useState(post ? post.blogpost : ""); 
   const { id } = useParams();
-// Loading post
+  // Loading post
   useEffect(() => {
     if (post) {
       setCurrentPost(post);
@@ -49,6 +49,7 @@ function PostDetails({ post, onClose }) {
         .then((response) => {
           setCurrentPost(response.data); 
           setIsEditing(false);
+          onUpdate(response.data); // Update data
         })
         .catch((error) => {
           console.error("Error updating the post:", error);

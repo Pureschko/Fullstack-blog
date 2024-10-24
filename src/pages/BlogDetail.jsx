@@ -30,6 +30,11 @@ const BlogDetail = () => {
     fetchBlogDetail();
   }, [id]);
 
+  // Inna's code: function to update post
+  const updateBlogPost = (updatedPost) => {
+    setBlog(updatedPost);
+  };
+
   // Handle loading and error states
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
@@ -52,6 +57,10 @@ const BlogDetail = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-4">{blog.title}</h1>
+      {/* Inna's changes: put here date */}
+      <p className="text-gray-600 mb-2"> 
+        {new Date(blog.date).toLocaleDateString()}
+      </p>
       {blog.image_url ? (
         <img
           src={blog.image_url}
@@ -67,14 +76,11 @@ const BlogDetail = () => {
           onClick={() => openPopup(blog)} //Inna's code: Open the popup
         /> // Replace with your default image URL
       )}
-      <p className="text-gray-600 mb-2">
-        {new Date(blog.date).toLocaleDateString()}
-      </p>
-      <p className="text-lg">{blog.blogPost}</p>
-      <p>{blog.id}</p>
+      <p className="text-lg">{blog.blogpost}</p>
+      {/* <p>{blog.id}</p> */}
       {/* Inna's code: popup rendering */}
       {showPopup && selectedPost && (
-  <PostDetails post={selectedPost} onClose={closePopup} />
+  <PostDetails post={selectedPost} onClose={closePopup} onUpdate={updateBlogPost} />
 )}
     </div>
   );
