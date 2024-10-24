@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function PostDetails({ post, onClose, onUpdate }) {
   const [currentPost, setCurrentPost] = useState(post);
   const [isEditing, setIsEditing] = useState(false);
   const [content, setContent] = useState(post ? post.blogpost : ""); 
   const { id } = useParams();
+  const navigate = useNavigate();
   // Loading post
   useEffect(() => {
     if (post) {
@@ -25,16 +26,17 @@ function PostDetails({ post, onClose, onUpdate }) {
     }
   }, [id, post]);
 // Function for deleting
-  const handleDelete = () => {
-    axios
-      .delete(`http://localhost:3000/api/v1/BlogPosts/${id}`)
-      .then(() => {
-        onClose(); 
-      })
-      .catch((error) => {
-        console.error("Error deleting the post:", error);
-      });
-  };
+const handleDelete = () => {
+  axios
+    .delete(`http://localhost:3000/api/v1/BlogPosts/${id}`)
+    .then(() => {
+      onClose(); 
+      navigate("/Blogs"); 
+    })
+    .catch((error) => {
+      console.error("Error deleting the post:", error);
+    });
+};
 // Function for editing
   const handleEdit = () => {
     if (isEditing) {
